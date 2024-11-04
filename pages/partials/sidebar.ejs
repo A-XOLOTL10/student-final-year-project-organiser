@@ -1,0 +1,46 @@
+<aside class="sidebar">
+    <div class="top">
+        <div class="logo">
+            <h1>BUHREC</h1>
+        </div>
+        <div class="progress-box">
+            <% if (typeof sidebar !== 'undefined' && sidebar) { %>
+                <% sidebar.forEach( (progress, index) => { %>
+                    <div class="progress
+                    <% if (progress.head.toLowerCase().split(" ").join("-") == active) { %>
+                     active
+                    <% } %>
+                    <% if (completed.includes(progress.head.toLowerCase().split(" ").join("-"))) { %>
+                     completed
+                    <% } %>
+                    <% if (progress.head.toLowerCase().split(" ").join("-") == 'verification-&-validation') { %>
+                     change-if-neccessary
+                    <% } %>
+                    ">
+                        <div class="progress-index-box">
+                            <div class="progress-index">
+                                <span><%= index + 1 %></span>
+                            </div>
+                        </div>
+                        <div class="progress-text">
+                            <h1><%= progress.head %></h1>
+                            <p><%= progress.para %></p>
+                        </div>
+                    </div>
+                <% }) %>    
+            <% } %>
+        </div>
+    </div>
+    <div class="bottom">
+        <p class="quote">“You vexed shy mirth now noise. Talked him people valley add use her depend letter. Allowance”</p>
+        <div class="profile progress active">
+            <div class="pfp img-here">
+                <img src="/images/pfp/divine.jpg" alt="img">
+            </div>
+            <div class="progress-text">
+                <h1 class="cap">ezenagu divine</h1>
+                <p class="cap">assistant group leader</p>
+            </div>
+        </div>
+    </div>
+</aside>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BUHREC</title>
+
+    <%- include('partials/head') %>
+        <link rel="stylesheet" href="/styles/landing.css">
+
+</head>
+
+<body>
+
+    <%- include('partials/alert') %>
+
+    <main>
+        <div class="landing">
+            <div class="landing-info">
+                <div class="landing-heading">
+                    <h1>Elevate your<br>proposals with<br>expert reviews!</h1>
+                    <div class="landing-links">
+                        <% if (isLoggedIn) { %>
+                            <a href="/dashboard">Go to dashboard</a>
+                        <% } else { %>
+                            <a href="/login">Login to your account</a>
+                            <a href="/signup">Create an account</a>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="landing-about">
+                    <div class="about-us">
+                        <h1>about us</h1>
+                        <p>At BUHREC, our seasoned reviewers provide invaluable feedback, helping you refine your
+                            proposals and achieve success.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="landing-img">
+                <div class="landing-slider" data-type="slider">
+                    <img src="/images/others/dada.jpg" alt="img">
+                    <img src="/images/others/busari.jpg" alt="img">
+                    <img src="/images/others/divine.jpg" alt="img">
+                    <img src="/images/others/abzmoni.jpg" alt="img">
+                    <img src="/images/others/popoola.jpg" alt="img">
+                </div>
+                <div class="landing-row">
+                    <div class="members">
+                        <div class="avatars">
+                            <img src="/images/avatars/avatar-1.png" alt="pfp">
+                            <img src="/images/avatars/avatar-2.png" alt="pfp">
+                            <img src="/images/avatars/avatar-3.png" alt="pfp">
+                            <img src="/images/avatars/avatar-4.png" alt="pfp">
+                            <img src="/images/avatars/avatar-5.png" alt="pfp">
+                        </div>
+                        <div class="numbers-box">
+                            <div class="numbers">
+                                <p>5</p>
+                                <span>/</span>
+                                <span>5</span>
+                            </div>
+                        </div>
+                        <p class="members-text">Sigma males at work</p>
+                    </div>
+                    <div class="landing-row-slider hero-img" data-type="slider">
+                        <img src="/images/UI/slide (1).png" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact">
+                <h1>contact us:</h1>
+            </div>
+            <div class="contact">
+                <img src="/images/icons/whatsapp.png" alt="contact">
+                <p>+234 905 251 3369</p>
+            </div>
+            <div class="contact">
+                <img src="/images/icons/github.png" alt="contact">
+                <p>dadateniola</p>
+            </div>
+            <div class="contact">
+                <img src="/images/icons/twitter.png" alt="contact">
+                <p>@DavidAb85515734</p>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/foot') %>
+        <script>
+            new Slider({ slider: select("[data-type='slider']"), gap: 15 });
+
+            var newSlide = true;
+            const slideStart = 1;
+
+            function slider() {
+                const slide = document.querySelector(".hero-img");
+                const maxSlide = 3;
+
+                const tl = gsap.timeline();
+
+                var currentSlide = parseInt(slide.dataset?.slide) || 1;
+                currentSlide = (currentSlide % maxSlide == 0) ? slideStart : currentSlide + 1;
+                slide.dataset.slide = currentSlide;
+
+                const img = document.createElement('img');
+                img.src = `/images/UI/slide (${currentSlide}).png`;
+
+                tl
+                    .set(img, { scale: 1.4, opacity: 0 })
+                    .call(() => slide.appendChild(img))
+                    .to(img, { opacity: 1, delay: newSlide ? 2 : 0 })
+                    .to(img, { scale: 1, duration: 6, ease: 'Expo.easeOut' }, '<')
+                    .call(() => {
+                        console.log("ran");
+                        newSlide = false;
+                        slide.querySelector('img').remove();
+                        slider();
+                    })
+            }
+
+            const tl = gsap.timeline();
+
+            tl
+                .set(".hero-img img", { scale: 1.4, opacity: 0 })
+                .to(".hero-img img", { scale: 1, opacity: 1, ease: "Expo.easeOut", duration: 2, delay: 2 })
+                .call(() => slider());
+
+        </script>
+
+</body>
+
+</html>

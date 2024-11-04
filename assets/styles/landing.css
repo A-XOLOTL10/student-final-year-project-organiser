@@ -1,0 +1,262 @@
+main {
+    width: 100vw;
+    display: block;
+}
+
+.landing {
+    height: calc(100vh - 40px);
+    flex: 1;
+    display: flex;
+}
+
+.landing>* {
+    flex: 1;
+}
+
+.landing-info {
+    padding: var(--general-padding);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.landing-heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--general-padding);
+}
+
+.landing-heading h1 {
+    font-size: 4.8vw;
+    font-weight: bold;
+    font-family: "Manrope", sans-serif;
+    text-transform: capitalize;
+}
+
+.landing-links {
+    display: flex;
+    gap: 20px;
+}
+
+.landing-links a {
+    display: block;
+    padding: 18px 20px;
+    color: black;
+    font-weight: 600;
+    font-size: var(--small-text);
+    border-radius: 10px;
+}
+
+.landing-links a:first-child {
+    background-color: var(--malachite);
+}
+
+.landing-links a:last-child {
+    background-color: var(--wisteria);
+}
+
+.about-us {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.about-us h1 {
+    text-transform: capitalize;
+    color: var(--sub);
+    font-size: 0.85em;
+}
+
+.about-us p {
+    line-height: 1.5;
+    font-size: 0.85em;
+}
+
+.landing-img {
+    padding: var(--general-padding);
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.landing-slider {
+    flex: 1;
+}
+
+.landing-img img {
+    width: 100%;
+}
+
+[data-type="slider"] {
+    background-color: rgba(45, 45, 45, 0.5);
+    animation: fade 2s infinite linear;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+[data-type="slider"]>* {
+    opacity: 0;
+}
+
+[data-type="slider"].stop {
+    animation: none;
+}
+
+@keyframes fade {
+    0% {
+        background-color: rgba(45, 45, 45, 0.5);
+    }
+
+    50% {
+        background-color: rgba(45, 45, 45, 0.8);
+    }
+
+    100% {
+        background-color: rgba(45, 45, 45, 0.5);
+    }
+}
+
+.slider {
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    white-space: nowrap;
+    /* opacity: 0; */
+    will-change: transform;
+    border-radius: 20px;
+}
+
+.slide {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide>* {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+}
+
+.landing-row {
+    height: 195px;
+    display: flex;
+    gap: 20px;
+}
+
+.landing-row-slider {
+    position: relative;
+    padding: 10px;
+    background-color: var(--dark);
+    flex: 1;
+    border: 3px solid rgba(var(--white), 0.2);
+}
+
+.landing-row-slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.landing-row>* {
+    height: 100% !important;
+}
+
+.members {
+    padding: 25px;
+    background-color: var(--ever-green);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.avatars {
+    display: flex;
+    justify-content: center;
+}
+
+.avatars img {
+    width: 35px;
+    height: 35px;
+    border-color: var(--ever-green);
+    margin-left: -5px;
+}
+
+.numbers-box {
+    display: flex;
+}
+
+.numbers {
+    padding: 8px 20px 12px;
+    border-radius: 25px;
+    background-color: rgba(var(--white), 0.2);
+    display: flex;
+    align-items: end;
+    gap: 5px;
+}
+
+.numbers>* {
+    height: 20px;
+    display: flex;
+    align-items: end;
+}
+
+.numbers p {
+    line-height: 1;
+    font-weight: 600;
+}
+
+.numbers span {
+    line-height: 1;
+    font-size: 0.8em;
+    padding-bottom: 1px;
+}
+
+.members-text {
+    font-size: var(--small-text);
+}
+
+
+
+.footer {
+    width: 100%;
+    padding: 15px 40px;
+    padding-top: 0;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.contact img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.4;
+}
+
+.contact h1 {
+    color: white;
+    font-size: 0.7em;
+    text-transform: capitalize;
+}
+
+.contact p {
+    font-size: 0.7em;
+    color: var(--super-sub);
+}

@@ -1,0 +1,119 @@
+<div id="add-task-overlay">
+    <div class="content-head">
+        <h1 class="no-sub">Add a new proposal</h1>
+    </div>
+    <form action="/add-task" method="post" class="form-grid" id="pdf-form">
+        <div class="form-group">
+            <label for="task_name">proposal name</label>
+            <input type="text" name="task_name" id="task_name" placeholder="Enter task name">
+        </div>
+        <div class="form-group">
+            <label for="course">course</label>
+            <select name="course" id="course">
+                <option value="" selected>Select the course</option>
+                <% data.courses.forEach(course=> { %>
+                    <option value=<%=course %>><%= course.split("_").join(" ") %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class=" form-group">
+                            <label for="description">description</label>
+                            <textarea name="description" id="description" cols="30" rows="10"
+                                placeholder="Enter task description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pdfFile">upload document</label>
+            <label for="pdfFile" id="pdf-box" data-preview="pdfFile" <% if (data.previewRoute) { %> class="none" <% } %>
+                    >
+                    <% if (data.previewRoute) { %>
+                        <iframe src=<%=data.previewRoute %> width="100%" height="100%"></iframe>
+                        <% } %>
+                            <div class="pdf-img">
+                                <img src="/images/icons/upload.png" alt="icon">
+                                <p>Click to upload</p>
+                            </div>
+            </label>
+            <input type="file" name="pdfFile" id="pdfFile" accept=".pdf">
+        </div>
+    </form>
+    <div class="form-btn">
+        <button type="button" data-close>close</button>
+        <button type="submit" form="pdf-form">add proposal</button>
+    </div>
+</div>
+<div id="task">
+    <div class="task-content">
+        <div class="content-head">
+            <h1 data-task-task_name>-</h1>
+        </div>
+        <div class="task-info">
+            <div class="task-info-text" id="task-owner">
+                <h1>owner</h1>
+            </div>
+            <div class="task-info-text">
+                <h1>course</h1>
+                <p data-task-course>-</p>
+            </div>
+            <div class="task-info-text">
+                <h1>start date</h1>
+                <p data-task-created>-</p>
+            </div>
+            <div class="task-info-text">
+                <h1>deadline</h1>
+                <p data-task-deadline>-</p>
+            </div>
+        </div>
+        <div class="task-info-text">
+            <h1>description</h1>
+            <p data-task-description>-</p>
+        </div>
+        <div class="task-info-text">
+            <h1>attachments ( <span data-task-attach_length>-</span> )</h1>
+            <div class="atachments" id="attachments-box"></div>
+        </div>
+        <div class="task-info-text hidden" id="certify">
+            <h1>action</h1>
+            <div class="task-info-cta">
+                <button data-task-certify>Certify proposal</button>
+            </div>
+        </div>
+        <div class="task-info-text hidden" id="certified">
+            <div>
+                <a href="" data-task-view-certificate target="_blank">view certificate</a>
+            </div>
+            <p class="no-cap stars">Proposal has been certified by <span class="glow" data-task-reviewer>-</span></p>
+        </div>
+    </div>
+    <div class="task-chat">
+        <div class="chat-profile-box" id="reviewer-box"></div>
+        <div class="activity">
+            <div class="line-hr"></div>
+            <p>activity</p>
+            <div class="line-hr"></div>
+        </div>
+        <div class="task-message-box" id="message-box"></div>
+        <div class="task-chat-box hidden" id="chat-box">
+            <label for="chatFiles" class="no-star">
+                <img src="/images/icons/clip.png" alt="icon">
+            </label>
+            <input type="file" name="chatFiles" id="chatFiles" accept=".pdf">
+            <form action="/chat-message" method="post" id="form-chat-message">
+                <textarea name="message" id="message" rows="1" placeholder="Write a message"></textarea>
+                <input type="hidden" name="task_id" id="task_id">
+                <button type="submit">
+                    <img src="/images/icons/plane.png" alt="icon">
+                </button>
+            </form>
+        </div>
+        <div class="task-chat-cta hidden" id="chat-cta">
+            <button data-close>close</button>
+            <button data-accept>accept proposal</button>
+        </div>
+        <div class="task-chat-cta hidden" id="chat-close">
+            <button data-close>close</button>
+        </div>
+    </div>
+</div>
+<div id="upload-box">
+
+</div>
